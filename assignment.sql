@@ -153,9 +153,12 @@ select first_name,last_name,job_id from employees where job_id=(select job_id fr
 select e.first_name,d.department_name,l.city from employees e join departments d on e.department_id=d.department_id
 join locations l on d.location_id=l.location_id  ;
 
--- 13. Display the name of the employee whose salary is the lowest. 
+-- -- 13. Display the name of the employee whose salary is the lowest. 
 select first_name,last_name from employees where salary=(select min(salary) from employees) ;
 
+-- 14. Display the names of all employees except the lowest paid.
+select * from employees where salary<>(select min(salary) from employees);
+ 
 -- 1. Write a query to display the last name, department number, department name for all employees. 
 select e.last_name,e.department_id,d.department_name from employees e join departments d on e.department_id=d.department_id;
 
